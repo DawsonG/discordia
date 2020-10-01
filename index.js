@@ -12,31 +12,15 @@ Object.keys(commands).map(key => {
   client.commands.set(commands[key].name, commands[key]);
 });
 
-client.on('ready', () => {
-  console.info(`Logged in as ${client.user.tag}!`);
-});
-
-client.on('message', (message) => {
-  const { content } = message;
-  
-  if (!content.startsWith('!')) return;
-  
-  const args = content.split(/ +/);
-  const command = args.shift().replace('!','').toLowerCase();
-  if (!client.commands.has(command)) return;
-
-  try {
-    client.commands.get(command).execute(message, args);
-  } catch (error) {
-    console.error(error);
-    message.reply('there was an error trying to execute that command!');
-  }
-});
+const events = require('./game/events')(client);
+client.on('ready', events.ready);
+client.on('message', events.message);
+client.on('guildMemberAdd', events.guildMemberAdd);
 
 const app = express();
 const port = '6001';
 
-app.use('/assets', express.static(path.join(__dirname, 'castle-of-the-south-wind', 'pictures')));
+app.use('/assets', express.static(path.join(__dirname, process.env.STORY, 'pictures')));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

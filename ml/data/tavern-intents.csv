@@ -1,0 +1,16 @@
+Phrase,Intent,Domain
+I could use a drink.,drink.order,drink
+I'd like to buy a drink.,drink.order,drink
+Let's get a pint,drink.order,drink
+"Barkeep, beers for my party!",drink.order,drink
+A round for the table,drink.order,drink
+"I'd like one alcohol, please.",drink.order,drink
+Get me a beer!,drink.order,drink
+"Barkeep, get me a beer!",drink.order,drink
+"Barkeep, what is this swill?",drink.insult,drink
+"Ugh, this beer is skunked.",drink.insult,drink
+This beer has gone bad.,drink.insult,drink
+Fine beer!,drink.compliment,drink
+Could use some music.,music.order,music
+This music is bad.,music.insult,music
+I don't like the music.,music.insult,music

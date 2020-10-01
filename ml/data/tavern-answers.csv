@@ -1,0 +1,3 @@
+Phrase,Intent,Domain
+"What are you drinkin'?",drink.order,drink
+"What do you want today?",drink.order,drink

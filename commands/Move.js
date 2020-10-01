@@ -1,12 +1,13 @@
-const locations = require('../castle-of-the-south-wind/locations');
+const { findLocation } = require('../utils/location');
 
 module.exports = {
   name: 'move',
   execute: async (msg, args) => {
-    const location = args.join('');
+    const search = args.join('');
+    const location = findLocation(search);
     
     try {
-      const channel = await msg.client.channels.fetch(locations[location].id);
+      const channel = await msg.client.channels.fetch(location.id);
       
       await channel.updateOverwrite(msg.author, {
         VIEW_CHANNEL: true,
